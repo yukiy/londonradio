@@ -51,11 +51,11 @@ var placeObjs = [
 		artist: "The Kinks",
 		songname: "Waterloo Sunset",
 		place: "148598695180177",
-		video: "fvDoDaCYrEY",
+		video: "1b2duP2emgA",
 		checkins: "loading...",
 		interval: null,
 		startTime: 3,
-		endTime: 40
+		endTime: 48
 		
 	},
 	brixton ={
@@ -76,11 +76,11 @@ var placeObjs = [
 		artist: "The Pogues",
 		songname: "Rainy Night in Soho",
 		place: "150103361689259",
-		video: "55Yp8vecWXM",
+		video: "u1m3q9mQN-s",
 		checkins: "loading...",
 		interval: null,
-		startTime: 85,
-		endTime: 140
+		startTime: 89,
+		endTime: 109
 	},
 	piccadilly ={
 		id: "piccadilly",
@@ -92,7 +92,7 @@ var placeObjs = [
 		checkins: "loading...",
 		interval: null,
 		startTime: 0,
-		endTime: 46
+		endTime: 32
 	},
 	victoria ={
 		id: "victoria",
@@ -161,7 +161,7 @@ var placeObjs = [
 		artist: "Russ Conway",
 		songname: "Westminster Waltz",
 		place: "109943272365076",//Buckingham Palace
-		video: "qsFyoSKNSic",
+		video: "Q1-74tyGbk4",
 		checkins: "loading...",
 		interval: null,
 		startTime: 0,
@@ -197,7 +197,7 @@ var placeObjs = [
 		artist: "Pet Shop Boys",
 		songname: "King's Cross",
 		place: "kingscrosslondon",
-		video: "jIcdlNvyRVI",
+		video: "wOp_G7FL080",
 		checkins: "loading...",
 		interval: null,
 		startTime: 102,
@@ -233,11 +233,11 @@ var placeObjs = [
 			artist: "The Pogues",
 			songname: "White City",
 			place: "153044794716969",
-			video: "vCITD_Hi3tU",
+			video: "KLJSnbs99cQ",
 			checkins: "loading...",
 			interval: null,
-			startTime: 12,
-			endTime: 60
+			startTime: 26,
+			endTime: 76
 		},
 	lutonAirport ={
 			id: "lutonAirport",
@@ -248,7 +248,7 @@ var placeObjs = [
 			video: "dldJCeZjcBo",
 			checkins: "loading...",
 			interval: null,
-			startTime: 37,
+			startTime: 39,
 			endTime: 52
 		},
 	paddington ={
@@ -266,14 +266,14 @@ var placeObjs = [
 	coventGarden ={
 			id: "coventGarden",
 			placename: "Covent Garden Market",
-			artist: "Maria Callas",
-			songname: "Carmen, Covent Garden Opera House",
+			artist: "Puccini",
+			songname: "La Boheme, Covent Garden Opera House",
 			place: "138660022845831",
-			video: "6fZRssq7UlM",
+			video: "HfI9MaTIkGw",
 			checkins: "loading...",
 			interval: null,
-			startTime: 49,
-			endTime: 83
+			startTime: 15,
+			endTime: 36
 		}
 	
 ]
