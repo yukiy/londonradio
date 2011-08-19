@@ -108,10 +108,10 @@ var placeObjs = [
 	},
 	/*chelsea ={
 		id: "chelsea",
-		placename: "Chelsea",
+		placename: "Chelsea FC",
 		artist: "Elvis Costello",
 		songname: "I Don't Want To Go Chelsea",
-		place: "108647005863529", // not yet
+		place: "210658373173",
 		video: "DjYTgwDizbk",
 		checkins: "loading...",
 		interval: null,
@@ -123,7 +123,7 @@ var placeObjs = [
 		placename: "Goodge Street",
 		artist: "Donovan",
 		songname: "Sunny Goodge Street",
-		place: "108647005863529",// not yet
+		place: "115863865148235",
 		video: "kI434oaUT2Y",
 		checkins: "loading...",
 		interval: null,
@@ -132,10 +132,10 @@ var placeObjs = [
 	},
 	camden ={
 		id: "camden",
-		placename: "Camden Town",
+		placename: "Camden Town Station",
 		artist: "Suggs",
 		songname: "Camden Town",
-		place: "108647005863529",//not yet
+		place: "126390497413455",
 		video: "6CyaEEYeR7w",
 		checkins: "loading...",
 		interval: null,
@@ -144,15 +144,16 @@ var placeObjs = [
 	},
 	warwickAv ={
 		id: "warwickAv",
-		placename: "Warwick Avenue",
+		placename: "Little Venice",
 		artist: "Duffy",
 		songname: "Warwick Avenue",
-		place: "108647005863529",//not yet
+		place: "155122281183013",
 		video: "MkkmQNA_aRs",
 		checkins: "loading...",
 		interval: null,
 		startTime: 35,
 		endTime: 58
+
 	},*/
 	buckinghamPalace ={
 		id: "buckinghamPalace",
@@ -168,10 +169,10 @@ var placeObjs = [
 	},
 	/*newcross ={
 		id: "newcross",
-		placename: "New Cross",
+		placename: "New Cross Inn",
 		artist: "Carter USM",
 		songname: "The Only Living Boy In New Cross",
-		place: "108647005863529",//not yet
+		place: "NewXInn",
 		video: "piyGAdcd_s8",
 		checkins: "loading...",
 		interval: null,
@@ -180,10 +181,10 @@ var placeObjs = [
 	},
 	finchley ={
 		id: "finchley",
-		placename: "Finchley Central",
+		placename: "Finchley central station",
 		artist: "New Vaudeville Band",
 		songname: "Finchley Central",
-		place: "108647005863529",//not yet
+		place: "142955922434488",
 		video: "UvMYHbN5baw",
 		checkins: "loading...",
 		interval: null,
@@ -204,10 +205,10 @@ var placeObjs = [
 	},
 	/*mileend ={
 		id: "mileend",
-		placename: "Mile End",
+		placename: "Mile End Station",
 		artist: "Pulp",
 		songname: "Mile End",
-		place: "238343719514675",//not yet
+		place: "147194711982590",
 		video: "MEaKNNboFiE",
 		checkins: "loading...",
 		interval: null,
@@ -219,7 +220,7 @@ var placeObjs = [
 		placename: "Wardour Street",
 		artist: "The Jam",
 		songname: "A Bomb In Wardour Street",
-		place: "ohareairport",//not yet
+		place: "160821167264510",
 		video: "cZPSZYPHYtQ",
 		checkins: "loading...",
 		interval: null,
