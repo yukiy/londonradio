@@ -19,26 +19,18 @@ $(function() {
 
 
 function setup(placeObj){
-	$("body").append("<span id='"+placeObj.name+"'><div id='"+placeObj.name+"_vid'>Loading...</div></span>");
-	$("#"+placeObj.name).append("<div id='"+placeObj.name+"_info' class='place_info'></div>");
+	$("#wrapper").append("<span id='"+placeObj.id+"' class='container'><div id='"+placeObj.id+"_vid'>Loading...</div></span>");
+	$("#"+placeObj.id).append("<div id='"+placeObj.id+"_info' class='place_info'></div>");
+	var style = {
+		width: videoW,
+		"margin-left": "1px",
+		"margin-right": "1px",
+		"margin-top": "0px",
+		"margin-bottom": "0px"
+	}
+	$('.container').css(style);
 	setInitialInfo(placeObj)
 }
-
-
-function setLoop(placeObj){
-	setInterval(function(){
-			monitorCheckins(placeObj);
-	},5000)
-}
-
-
-function updateInfo(placeObj){
-	var infoElementId = placeObj.name + "_info";
-	$("#"+infoElementId).empty();
-	$("#"+infoElementId).append("<p class='place_name'>"+placeObj.officialName+"</p>");
-	$("#"+infoElementId).append("<p class='place_checkins'>"+placeObj.checkins+" times checked in</p>");
-}
-
 
 function setInitialInfo(placeObj){
 	var graphUrl = "http://graph.facebook.com/";
@@ -48,6 +40,30 @@ function setInitialInfo(placeObj){
 		placeObj.checkins= data.checkins;
 		updateInfo(placeObj);
 	});
+}
+
+function setLoop(placeObj){
+	var checkinLoop= setInterval(function(){
+			monitorCheckins(placeObj);
+		},5000);
+
+	var displayLoop= setInterval(function(){
+		updateInfo(placeObj);
+	},15000)
+}
+
+
+function updateInfo(placeObj){
+		var infoElementId = placeObj.id + "_info";
+		$("#"+infoElementId).empty();
+	//	$("#"+infoElementId).append("<p class='place_name'>"+placeObj.placename+"</p>");
+	//	$("#"+infoElementId).append("<p class='place_checkins'>"+placeObj.checkins+" times checked in</p>");
+		$("#"+infoElementId).append("<marquee class='scroll'>"+placeObj.songname+" / "+placeObj.artist+" @"+placeObj.placename+" - currently "+placeObj.checkins+" checkins</marquee>");
+		var style= {
+			"margin-top": "0",
+			"background": "#000000",
+		}
+		$(".scroll").css(style);
 }
 
 
@@ -60,7 +76,7 @@ function monitorCheckins(placeObj){
 		if(newCheckins > placeObj.checkins){
 			placeObj.checkins = newCheckins;
 			playVideoSection(placeObj,placeObj.startTime,placeObj.endTime);
+			$("#nowplaying").html(placeObj.songname+" / "+placeObj.artist+" @"+placeObj.placename+" - "+placeObj.checkins+" checkins");
 		}
-		updateInfo(placeObj);
 	});
 }
