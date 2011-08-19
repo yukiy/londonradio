@@ -103,10 +103,10 @@ var placeObjs = [
 		video: "6VzsQoR806c",
 		checkins: "loading...",
 		interval: null,
-		startTime: 29,
-		endTime: 84
+		startTime: 67,
+		endTime: 83
 	},
-	chelsea ={
+	/*chelsea ={
 		id: "chelsea",
 		placename: "Chelsea",
 		artist: "Elvis Costello",
@@ -153,20 +153,20 @@ var placeObjs = [
 		interval: null,
 		startTime: 35,
 		endTime: 58
-	},
-	westminster ={
-		id: "westminster",
-		placename: "Westminster",
+	},*/
+	buckinghamPalace ={
+		id: "buckinghamPalace",
+		placename: "Buckingham Palace",
 		artist: "Russ Conway",
 		songname: "Westminster Waltz",
-		place: "108647005863529",//not yet
+		place: "109943272365076",//Buckingham Palace
 		video: "qsFyoSKNSic",
 		checkins: "loading...",
 		interval: null,
 		startTime: 0,
 		endTime: 48
 	},
-	newcross ={
+	/*newcross ={
 		id: "newcross",
 		placename: "New Cross",
 		artist: "Carter USM",
@@ -189,20 +189,20 @@ var placeObjs = [
 		interval: null,
 		startTime: 0,
 		endTime: 48
-	},
+	},*/
 	kingscross ={
 		id: "kingscross",
 		placename: "King's Cross",
 		artist: "Pet Shop Boys",
 		songname: "King's Cross",
-		place: "108647005863529",//not yet
+		place: "kingscrosslondon",
 		video: "jIcdlNvyRVI",
 		checkins: "loading...",
 		interval: null,
 		startTime: 102,
 		endTime: 132
 	},
-	mileend ={
+	/*mileend ={
 		id: "mileend",
 		placename: "Mile End",
 		artist: "Pulp",
@@ -225,5 +225,54 @@ var placeObjs = [
 		interval: null,
 		startTime: 27,
 		endTime: 60
-	}
+	},*/
+	westfield ={
+			id: "westfield",
+			placename: "Westfield Shopping Centre",
+			artist: "The Pogues",
+			songname: "White City",
+			place: "153044794716969",
+			video: "vCITD_Hi3tU",
+			checkins: "loading...",
+			interval: null,
+			startTime: 12,
+			endTime: 60
+		},
+	lutonAirport ={
+			id: "lutonAirport",
+			placename: "Luton Airport",
+			artist: "Cats UK",
+			songname: "Luton Airport",
+			place: "163914683662328",
+			video: "dldJCeZjcBo",
+			checkins: "loading...",
+			interval: null,
+			startTime: 37,
+			endTime: 52
+		},
+	paddington ={
+				id: "paddington",
+				placename: "Paddington Station",
+				artist: "Herbert Chappell",
+				songname: "Paddington Bear TV Theme Song",
+				place: "147144708658259",
+				video: "B2jlIytnw10",
+				checkins: "loading...",
+				interval: null,
+				startTime: 37,
+				endTime: 52
+			},
+	coventGarden ={
+			id: "coventGarden",
+			placename: "Covent Garden Market",
+			artist: "Maria Callas",
+			songname: "Carmen, Covent Garden Opera House",
+			place: "138660022845831",
+			video: "6fZRssq7UlM",
+			checkins: "loading...",
+			interval: null,
+			startTime: 49,
+			endTime: 83
+		}
+	
 ]
