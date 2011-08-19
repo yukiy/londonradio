@@ -76,7 +76,7 @@ function monitorCheckins(placeObj){
 		if(newCheckins > placeObj.checkins){
 			placeObj.checkins = newCheckins;
 			playVideoSection(placeObj,placeObj.startTime,placeObj.endTime);
-			$("#nowplaying").html(placeObj.songname+" / "+placeObj.artist+" @"+placeObj.placename+" - "+placeObj.checkins+" checkins");
+			$("#nowplaying").html("NOW PLAYING... "+placeObj.songname+" / "+placeObj.artist+" @"+placeObj.placename+" - "+placeObj.checkins+" checkins");
 		}
 	});
 }

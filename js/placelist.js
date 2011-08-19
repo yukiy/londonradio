@@ -1,13 +1,13 @@
 /*var airport = [
 	chicago ={
-		id: "chicago",
-		placename: "Chicago OHare International",
-		place: "ohareairport",
-		video: "SSd0pJSKzNY",
-		checkins: "loading...",
-		interval: null,
-		startTime: 10,
-		endTime: 20
+		name: "chicago",
+		officialName: "Gerry Rafferty - Baker Street",
+		place: "ohareairport", //facebook's place id
+		video: "SSd0pJSKzNY", //youtube's video id
+		checkins: "loading...", // "loading..." as initial value
+		interval: null, //null as initial value
+		startTime: 10, //what seconds this video starts at
+		endTime: 20 //what seconds this video ends at
 	},
 	heathrow ={
 		id: "heathrow",
