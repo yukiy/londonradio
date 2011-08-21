@@ -1,14 +1,27 @@
-////test
+function addTestForms(){
+	$("body").prepend("<select id='select_vid'></select>");
+	for(var i=0; i<placeObjs.length; i++){
+		$("#select_vid").append("<option>"+i+"</option>");
+	}
+	$("body").prepend("<input type='button' value='test' id='test_btn' /></div>");
+}
 function test(){
-	alert("ho!");
+	var val = $("#select_vid").val();
+	play(placeObjs[val]);
 }
 function setEventListners(){
 	$("#test_btn").click(function(){test();});
 }
-////////////////////////////////////////////
+function addTestElements(){
+	addTestForms();
+//	setInterval(function(){console.log(isPlaying);console.log(videoPlaying);},1000)
+}
+
+////////////////////////////////////////////////////////////////////////////////////
 
 
 $(function() {
+	addTestElements();
 	setEventListners();
 	for(var i=0; i<placeObjs.length; i++){
 		setup(placeObjs[i]);
@@ -67,6 +80,13 @@ function updateInfo(placeObj){
 }
 
 
+function play(placeObj){
+	playVideoSection(placeObj,placeObj.startTime,placeObj.endTime);
+	$("#nowplaying").html("NOW PLAYING... "+placeObj.songname+" / "+placeObj.artist+" @"+placeObj.placename+" - "+placeObj.checkins+" checkins");
+
+}
+
+
 function monitorCheckins(placeObj){
 	var graphUrl = "http://graph.facebook.com/";
 	var placeId = placeObj.place;
@@ -75,8 +95,7 @@ function monitorCheckins(placeObj){
 		var newCheckins = data.checkins;
 		if(newCheckins > placeObj.checkins){
 			placeObj.checkins = newCheckins;
-			playVideoSection(placeObj,placeObj.startTime,placeObj.endTime);
-			$("#nowplaying").html("NOW PLAYING... "+placeObj.songname+" / "+placeObj.artist+" @"+placeObj.placename+" - "+placeObj.checkins+" checkins");
+			play(placeObj);
 		}
 	});
 }

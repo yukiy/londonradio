@@ -1,5 +1,9 @@
+//300x225
 var videoW = 300;
 var videoH = 225;
+var isPlaying = false;
+var videoPlaying;
+
 
 function setVideo(placeObj){
 	var videoId = placeObj.video;
@@ -29,11 +33,46 @@ function getPlayerId(obj){
 	return objId;
 }
 
+
+function getCurrentTime(obj) {
+	var objId = getPlayerId(obj);
+	if (objId) {
+		var now = objId.getCurrentTime();
+		return now;
+	}
+}
+
+
 function playVideo(obj) {
 	var objId = getPlayerId(obj);
 	if (objId) {
+		isPlaying = true;
+		videoPlaying = objId;
 		objId.playVideo();
 	}	
+}
+
+function seekTo(obj,startSec) {
+	var objId = getPlayerId(obj);
+	if (objId) {
+		isPlaying = true;
+		videoPlaying = obj;
+		objId.seekTo(startSec,true);
+	}	
+}
+
+function playVideoSection(obj, startSec, endSec){
+	if(isPlaying){
+		stopVideo(videoPlaying);
+	}
+	seekTo(obj, startSec);
+	obj.interval = setInterval(function(){
+		if(getCurrentTime(obj) > endSec){
+			stopVideo(obj);
+			$("#nowplaying").html("WAITING FOR CHECKINS");
+			clearInterval(obj.interval);
+		}
+	},500);
 }
 
 function pauseVideo(obj) {
@@ -47,31 +86,6 @@ function stopVideo(obj) {
 	var objId = getPlayerId(obj);
 	if (objId) {
 		objId.stopVideo();
+		isPlaying = false;
 	}
-}
-
-function seekTo(obj,startSec) {
-	var objId = getPlayerId(obj);
-	if (objId) {
-		objId.seekTo(startSec,true);
-	}	
-}
-
-function getCurrentTime(obj) {
-	var objId = getPlayerId(obj);
-	if (objId) {
-		var now = objId.getCurrentTime();
-		return now;
-	}
-}
-
-function playVideoSection(obj, startSec, endSec){
-	seekTo(obj, startSec);
-	obj.interval = setInterval(function(){
-		if(getCurrentTime(obj) > endSec){
-			stopVideo(obj);
-			$("#nowplaying").html("WAITING FOR CHECKINS");
-			clearInterval(obj.interval);
-		}
-	},500);
 }
