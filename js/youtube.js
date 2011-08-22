@@ -1,11 +1,13 @@
 //300x225
 var videoW = 300;
-var videoH = 225;
+var videoH = 200;
 var isPlaying = false;
 var videoPlaying;
 
 
 function setVideo(placeObj){
+	videoW = $(document).width()/placeObjs.length;
+	videoH = videoW * 2/3;
 	var videoId = placeObj.video;
 	var params = { allowScriptAccess: "always" };
 	var atts = { id: placeObj.id + "_player", class: "player"};
@@ -58,7 +60,18 @@ function seekTo(obj,startSec) {
 		isPlaying = true;
 		videoPlaying = obj;
 		objId.seekTo(startSec,true);
-	}	
+	}
+}
+
+function setPlayerSize(obj, w, h){
+	var objId = getPlayerId(obj);
+	if (objId) {
+		$("#"+obj.id).width(w);
+		$("#"+obj.id).height(h);
+		$("#"+obj.id+"_player").attr("width", w);
+		$("#"+obj.id+"_player").attr("height", h);
+//		objId.setSize(w,h);
+	}
 }
 
 function playVideoSection(obj, startSec, endSec){
@@ -66,6 +79,7 @@ function playVideoSection(obj, startSec, endSec){
 		stopVideo(videoPlaying);
 	}
 	seekTo(obj, startSec);
+	obj.marker.setIcon(iconImg);
 	obj.interval = setInterval(function(){
 		if(getCurrentTime(obj) > endSec){
 			stopVideo(obj);
@@ -87,5 +101,7 @@ function stopVideo(obj) {
 	if (objId) {
 		objId.stopVideo();
 		isPlaying = false;
+		obj.marker.setIcon(undefined);
+		setPlayerSize(obj,videoW, videoH);
 	}
 }

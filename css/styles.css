@@ -1,4 +1,4 @@
-@CHARSET "ISO-8859-1";
+@CHARSET "UTF-8";
 
 /* =Reset default browser CSS. Based on work by Eric Meyer: http://meyerweb.com/eric/tools/css/reset/index.html
 -------------------------------------------------------------- */
@@ -18,42 +18,42 @@ table, caption, tbody, tfoot, thead, tr, th, td
 	padding: 0;
 	vertical-align: baseline;
 }
-body
-{
+
+body{
 	line-height: 1;
 	font-family: 'arial narrow'　sans-serif;
 	color: #DDDDDD;
 	background: yellow;
 }
-h1, h2, h3, h4, h5, h6
-{
+
+h1, h2, h3, h4, h5, h6{
 	clear: both;
 	font-weight: normal;
 }
-ol, ul
-{
+
+ol, ul{
 	list-style: none;
 }
-blockquote
-{
+
+blockquote{
 	quotes: none;
 }
-blockquote:before, blockquote:after
-{
+
+blockquote:before, blockquote:after{
 	content: '';
 	content: none;
 }
-del
-{
+
+del{
 	text-decoration: line-through;
 }
-table
-{
+
+table{
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-a img
-{
+
+a img{
 	border: none;
 }
 
@@ -61,12 +61,17 @@ a img
 /*custom stuff starts here*/
 
 body{
+	height: 100%;
+	margin: 0;
+	padding: 0;
 	text-align: center;
 }
 
 #wrapper{
+	top: 0;
 	margin:0 auto;
 	width: 100%;
+	text-align: center;
 }
 	
 	
@@ -79,7 +84,20 @@ body{
 }
 
 #nowplaying{
+	text-align: left;
 	font-size: 40px;
 	width: 100%;
 	background: #000000;
+}
+
+#videos{
+	text-align: left;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2px;
+}
+
+#map_canvas{
+	height: 400px;
+	width: 100%;
 }

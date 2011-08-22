@@ -12,11 +12,18 @@
 		<script type="text/javascript">
 			google.load("swfobject", "2.1");
 		</script>
+		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+		<script type="text/javascript" src="./js/gmaps.js"></script>
 		<link rel="stylesheet" type="text/css" media="all" href="./css/styles.css" />
 	</head>
 	<body>
+	<div id="test"></div>
 	<div id="wrapper">
 		<marquee id="nowplaying">WAITING FOR CHECKINS...</marquee>
+		<div id="map">
+			<div id="map_canvas"></div>
+		</div>
+		<div id="videos"></div>
 	</div>
 	 </body>
 </html>
