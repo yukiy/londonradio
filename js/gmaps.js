@@ -1,5 +1,6 @@
 var mainMap;
 var iconImg = 'http://wavearts.com/_img/img-mic.png';
+//var infowindow;
 
 function setTestMap(){
 	var london_latlng = new google.maps.LatLng(51.500152,-0.126236);
@@ -42,4 +43,15 @@ function createInfoWindow(map, marker, content){
 	});
 	return infowindow;
 }
+
+function openInfoWindow(map,marker){
+	
+	marker.infoWindow.open(map,marker);
+}
+
+function closeInfoWindow(map,marker){
+	
+	marker.infoWindow.close(map,marker);
+}
+
 

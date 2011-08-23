@@ -75,11 +75,17 @@ function setPlayerSize(obj, w, h){
 }
 
 function playVideoSection(obj, startSec, endSec){
+	console.log("object =");
+	console.log(obj);
 	if(isPlaying){
 		stopVideo(videoPlaying);
 	}
 	seekTo(obj, startSec);
 	obj.marker.setIcon(iconImg);
+	
+	//open the info window for the current location/song
+	openInfoWindow(mainMap, obj.marker);
+	
 	obj.interval = setInterval(function(){
 		if(getCurrentTime(obj) > endSec){
 			stopVideo(obj);
@@ -102,6 +108,10 @@ function stopVideo(obj) {
 		objId.stopVideo();
 		isPlaying = false;
 		obj.marker.setIcon(undefined);
+		
+		//close the info window for the current location/song
+		closeInfoWindow(mainMap, obj.marker);
+		
 		setPlayerSize(obj,videoW, videoH);
 	}
 }

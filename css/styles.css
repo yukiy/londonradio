@@ -21,9 +21,8 @@ table, caption, tbody, tfoot, thead, tr, th, td
 
 body{
 	line-height: 1;
-	font-family: 'arial narrow'　sans-serif;
-	color: #DDDDDD;
-	background: yellow;
+	font-family: 'arial narrow'sans-serif;
+
 }
 
 h1, h2, h3, h4, h5, h6{
