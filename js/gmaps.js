@@ -12,10 +12,11 @@ function setTestMap(){
 
 
 function createMap(latlng) {
+	console.log("create map");
 	var myOptions = {
 		zoom: 12,
 		center: latlng,
-		mapTypeId: google.maps.MapTypeId.ROADMAP
+		mapTypeId: google.maps.MapTypeId.SATELLITE
 	};
 	map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
 	return map;
@@ -54,4 +55,7 @@ function closeInfoWindow(map,marker){
 	marker.infoWindow.close(map,marker);
 }
 
-
+function moveMapCenter(lat, long){
+	console.log('move map centre');
+	mainMap.panTo(lat,long);
+}

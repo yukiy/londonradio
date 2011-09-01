@@ -103,10 +103,11 @@ function monitorCheckins(placeObj){
 	$.getJSON(url, function(data) {
 		if(placeObj.marker == undefined || placeObj.marker.position == undefined || placeObj.marker.position.lat() == undefined){
 			placeObj.marker= createMarkerFor(placeObj);
-			console.log(placeObj.marker);
+			//console.log(placeObj.marker);
 		}
 		var newCheckins = data.checkins;
 		if(newCheckins > placeObj.checkins){
+			console.log("ooh somethings different");
 			placeObj.checkins = newCheckins;
 			play(placeObj);
 		}
@@ -117,11 +118,13 @@ function monitorCheckins(placeObj){
 
 //google maps////////////////////////////////////////////////////////////////////
 function setMap(){
+	console.log("set map");
 	var london_latlng = new google.maps.LatLng(51.500152,-0.126236);
 	mainMap = createMap(london_latlng);
 }
 
 function createMarkerFor(placeObj){
+	console.log("create marker for");
 	var lat= placeObj.location.latitude;
 	var lng= placeObj.location.longitude;
 	var placeLatlng= new google.maps.LatLng(lat, lng);
