@@ -28,6 +28,7 @@ function addTestElements(){
 
 $(function() {
 	addTestElements();
+	fbLoad();
 	setMap();
 	for(var i=0; i<placeObjs.length; i++){
 		setHTML(placeObjs[i]);
@@ -51,21 +52,25 @@ function setHTML(placeObj){
 	$('.container').css(style);
 }
 
+
+
+
 function setInitialInfo(placeObj){
-	var graphUrl = "http://graph.facebook.com/";
-	var placeId = placeObj.place;
-	var url = graphUrl + placeId +"?callback=?";
-	$.getJSON(url, function(data) {
-		placeObj.checkins= data.checkins;
-		updateInfo(placeObj);
-		placeObj.location = data.location;
+	FB.api(placeObj.place, function(data) {
+		if(data.error){
+			console.log(placeObj.placename + data.error.message);
+		}else{
+			placeObj.checkins= data.checkins;
+			updateInfo(placeObj);
+			placeObj.location = data.location;
+		}
 	});
 }
+
 
 function setLoop(placeObj){
 	var checkinLoop= setInterval(function(){
 			monitorCheckins(placeObj);
-			console.log(placeObj);
 		},5000);
 
 	var displayLoop= setInterval(function(){
@@ -97,25 +102,38 @@ function play(placeObj){
 
 
 function monitorCheckins(placeObj){
-	var graphUrl = "http://graph.facebook.com/";
-	var placeId = placeObj.place;
-	var url = graphUrl + placeId +"?callback=?";
-	$.getJSON(url, function(data) { // here sometimes problem to get latitude
-		if(placeObj.marker == undefined || placeObj.marker.position == undefined || placeObj.marker.position.lat() == undefined){
-			placeObj.marker= createMarkerFor(placeObj);
-		}
-		var newCheckins = data.checkins;
-		if(newCheckins > placeObj.checkins){
-			placeObj.checkins = newCheckins;
-			play(placeObj);
+	FB.api(placeObj.place, function(data) {
+		if(data.error){
+			console.log(placeObj.placename + data.error.message);
+		}else{
+			if(placeObj.marker == undefined || placeObj.marker.position == undefined || placeObj.marker.position.lat() == undefined){
+				placeObj.marker= createMarkerFor(placeObj);
+			}
+			var newCheckins = data.checkins;
+			if(newCheckins > placeObj.checkins){
+				placeObj.checkins = newCheckins;
+				play(placeObj);
+			}
 		}
 	});
 }
 
-
+//facebook app load ////////////////////////////////////////////////////////////////////
+var MY_APP_ID = 189494814415750;
+function fbLoad(){
+	FB.init({
+		appId  : MY_APP_ID,
+		status : true, // check login status
+		cookie : true, // enable cookies to allow the server to access the session
+		xfbml  : true, // parse XFBML
+		channelUrl : 'http://WWW.MYDOMAIN.COM/channel.html', // channel.html file
+		oauth  : true // enable OAuth 2.0
+	});
+}
 
 //google maps////////////////////////////////////////////////////////////////////
 function setMap(){
+//	console.log("set map");
 	var london_latlng = new google.maps.LatLng(51.500152,-0.126236);
 	mainMap = createMap(london_latlng);
 }

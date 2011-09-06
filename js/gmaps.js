@@ -1,6 +1,5 @@
 var mainMap;
 var iconImg = 'http://wavearts.com/_img/img-mic.png';
-//var infowindow;
 
 function setTestMap(){
 	var london_latlng = new google.maps.LatLng(51.500152,-0.126236);
@@ -12,10 +11,11 @@ function setTestMap(){
 
 
 function createMap(latlng) {
+	//console.log("create map");
 	var myOptions = {
 		zoom: 12,
 		center: latlng,
-		mapTypeId: google.maps.MapTypeId.ROADMAP
+		mapTypeId: google.maps.MapTypeId.SATELLITE
 	};
 	map = new google.maps.Map(document.getElementById("map_canvas"),myOptions);
 	return map;
@@ -45,13 +45,15 @@ function createInfoWindow(map, marker, content){
 }
 
 function openInfoWindow(map,marker){
-	
 	marker.infoWindow.open(map,marker);
 }
 
 function closeInfoWindow(map,marker){
-	
 	marker.infoWindow.close(map,marker);
 }
 
-
+function moveMapCenter(lat, lng){
+//	console.log('move map centre');
+	var centreLatlng = new google.maps.LatLng(lat, lng);
+	mainMap.panTo(centreLatlng);
+}

@@ -246,52 +246,51 @@ var placeObjs = [
 		endTime: 60
 	},*/
 	westfield ={
-			id: "westfield",
-			placename: "Westfield Shopping Centre",
-			artist: "The Pogues",
-			songname: "White City",
-			place: "153044794716969",
-			video: "KLJSnbs99cQ",
-			checkins: "loading...",
-			interval: null,
-			startTime: 26,
-			endTime: 76
-		},
+		id: "westfield",
+		placename: "Westfield Shopping Centre",
+		artist: "The Pogues",
+		songname: "White City",
+		place: "153044794716969",
+		video: "KLJSnbs99cQ",
+		checkins: "loading...",
+		interval: null,
+		startTime: 26,
+		endTime: 76
+	},
 	lutonAirport ={
-			id: "lutonAirport",
-			placename: "Luton Airport",
-			artist: "Cats UK",
-			songname: "Luton Airport",
-			place: "163914683662328",
-			video: "dldJCeZjcBo",
-			checkins: "loading...",
-			interval: null,
-			startTime: 39,
-			endTime: 52
-		},
+		id: "lutonAirport",
+		placename: "Luton Airport",
+		artist: "Cats UK",
+		songname: "Luton Airport",
+		place: "163914683662328",
+		video: "dldJCeZjcBo",
+		checkins: "loading...",
+		interval: null,
+		startTime: 39,
+		endTime: 52
+	},
 	paddington ={
-				id: "paddington",
-				placename: "Paddington Station",
-				artist: "Herbert Chappell",
-				songname: "Paddington Bear TV Theme Song",
-				place: "147144708658259",
-				video: "B2jlIytnw10",
-				checkins: "loading...",
-				interval: null,
-				startTime: 37,
-				endTime: 52
-			},
+		id: "paddington",
+		placename: "Paddington Station",
+		artist: "Herbert Chappell",
+		songname: "Paddington Bear TV Theme Song",
+		place: "147144708658259",
+		video: "B2jlIytnw10",
+		checkins: "loading...",
+		interval: null,
+		startTime: 37,
+		endTime: 52
+	},
 	coventGarden ={
-			id: "coventGarden",
-			placename: "Covent Garden Market",
-			artist: "Puccini",
-			songname: "La Boheme, Covent Garden Opera House",
-			place: "138660022845831",
-			video: "HfI9MaTIkGw",
-			checkins: "loading...",
-			interval: null,
-			startTime: 15,
-			endTime: 36
-		}
-	
+		id: "coventGarden",
+		placename: "Covent Garden Market",
+		artist: "Puccini",
+		songname: "La Boheme, Covent Garden Opera House",
+		place: "100516936703754",
+		video: "HfI9MaTIkGw",
+		checkins: "loading...",
+		interval: null,
+		startTime: 15,
+		endTime: 36
+	}
 ]

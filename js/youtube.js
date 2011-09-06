@@ -74,16 +74,24 @@ function setPlayerSize(obj, w, h){
 }
 
 function playVideoSection(obj, startSec, endSec){
-	console.log("object =");
-	console.log(obj);
+	
 	if(isPlaying){
 		stopVideo(videoPlaying);
 	}
 	seekTo(obj, startSec);
+	
+	console.log(obj);
+	
+	mainMap.setZoom(18);
+	
+	//change marker icon to microphone
 	obj.marker.setIcon(iconImg);
 	
 	//open the info window for the current location/song
 	openInfoWindow(mainMap, obj.marker);
+	
+	//change centre of map to new location
+	moveMapCenter(obj.location.latitude, obj.location.longitude);
 	
 	obj.interval = setInterval(function(){
 		if(getCurrentTime(obj) > endSec){
