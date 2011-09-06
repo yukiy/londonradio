@@ -1,4 +1,3 @@
-//300x225
 var videoW = 300;
 var videoH = 200;
 var isPlaying = false;

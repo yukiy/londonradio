@@ -65,6 +65,7 @@ function setInitialInfo(placeObj){
 function setLoop(placeObj){
 	var checkinLoop= setInterval(function(){
 			monitorCheckins(placeObj);
+			console.log(placeObj);
 		},5000);
 
 	var displayLoop= setInterval(function(){
@@ -89,7 +90,6 @@ function updateInfo(placeObj){
 
 function play(placeObj){
 	setPlayerSize(placeObj, "100%", "100%");
-//	setPlayerSize(placeObj, videoW*4, videoH*4);
 	playVideoSection(placeObj, placeObj.startTime, placeObj.endTime);
 	$("#nowplaying").html("NOW PLAYING... "+placeObj.songname+" / "+placeObj.artist+" @"+placeObj.placename+" - "+placeObj.checkins+" checkins");
 
@@ -100,10 +100,9 @@ function monitorCheckins(placeObj){
 	var graphUrl = "http://graph.facebook.com/";
 	var placeId = placeObj.place;
 	var url = graphUrl + placeId +"?callback=?";
-	$.getJSON(url, function(data) {
+	$.getJSON(url, function(data) { // here sometimes problem to get latitude
 		if(placeObj.marker == undefined || placeObj.marker.position == undefined || placeObj.marker.position.lat() == undefined){
 			placeObj.marker= createMarkerFor(placeObj);
-			console.log(placeObj.marker);
 		}
 		var newCheckins = data.checkins;
 		if(newCheckins > placeObj.checkins){

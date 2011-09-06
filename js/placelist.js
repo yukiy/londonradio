@@ -1,3 +1,20 @@
+/*template
+	template ={
+		id: "bakerSt",
+		placename: "Baker Street",
+		artist: "Gerry Raferty",
+		songname: "Baker Street",
+		place: "153350041353078",
+		video: "SXCUGQHGi5o",
+		checkins: "loading...",
+		startTime: 25,
+		endTime: 57,
+		interval: null, // created by codes, doesn't need to be written here
+		marker: null, // created by codes, doesn't need to be written here
+		location: null // created by codes, doesn't need to be written here
+	},
+*/
+
 /*var airport = [
 	chicago ={
 		name: "chicago",
@@ -31,6 +48,7 @@
 	}
 ]
 */
+
 
 var placeObjs = [
 	bakerSt ={
