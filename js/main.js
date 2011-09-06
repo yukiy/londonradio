@@ -24,8 +24,6 @@ function addTestElements(){
 }
 
 ////////////////////////////////////////////////////////////////////////////////////
-
-
 $(function() {
 	addTestElements();
 	fbLoad();
@@ -39,39 +37,10 @@ $(function() {
 })
 
 
-function setHTML(placeObj){
-	$("#videos").append("<span id='"+placeObj.id+"' class='container'><div id='"+placeObj.id+"_vid'>Loading...</div></span>");
-	$("#"+placeObj.id).append("<div id='"+placeObj.id+"_info' class='place_info'></div>");
-	var style = {
-		width: videoW,
-		"margin-left": "1px",
-		"margin-right": "1px",
-		"margin-top": "0px",
-		"margin-bottom": "0px"
-	}
-	$('.container').css(style);
-}
-
-
-
-
-function setInitialInfo(placeObj){
-	FB.api(placeObj.place, function(data) {
-		if(data.error){
-			console.log(placeObj.placename + data.error.message);
-		}else{
-			placeObj.checkins= data.checkins;
-			updateInfo(placeObj);
-			placeObj.location = data.location;
-		}
-	});
-}
-
-
 function setLoop(placeObj){
 	var checkinLoop= setInterval(function(){
 			monitorCheckins(placeObj);
-		},5000);
+		},15000);
 
 	var displayLoop= setInterval(function(){
 		updateInfo(placeObj);
@@ -93,11 +62,70 @@ function updateInfo(placeObj){
 }
 
 
-function play(placeObj){
-	setPlayerSize(placeObj, "100%", "100%");
-	playVideoSection(placeObj, placeObj.startTime, placeObj.endTime);
-	$("#nowplaying").html("NOW PLAYING... "+placeObj.songname+" / "+placeObj.artist+" @"+placeObj.placename+" - "+placeObj.checkins+" checkins");
 
+//youtube////////////////////////////////////////////////////////////////////////
+var videoW = 300;
+var videoH = 200;
+var isPlaying = false;
+var lastPlayed;
+
+function setHTML(placeObj){
+	videoW = $(document).width()/placeObjs.length;
+	videoH = videoW * 2/3;
+	
+	$("#videos").append("<span id='"+placeObj.id+"' class='container'><div id='"+placeObj.id+"_vid'>Loading...</div></span>");
+	$("#"+placeObj.id).append("<div id='"+placeObj.id+"_info' class='place_info'></div>");
+	var style = {
+		width: videoW,
+		height: videoH,
+		"margin-left": "1px",
+		"margin-right": "1px",
+		"margin-top": "0px",
+		"margin-bottom": "0px"
+	}
+	$('.container').css(style);
+}
+
+
+function play(placeObj){
+	if(isPlaying){
+		var currentPlayer = getPlayer(lastPlayed.id);
+		currentPlayer.stopVideo();
+		stopAction(lastPlayed);
+	}
+	
+	setVideoSize(placeObj.id, "100%", "100%");
+	var player = getPlayer(placeObj.id);
+	playVideoSection(player, placeObj.startTime, placeObj.endTime, function(){stopAction(placeObj);});
+	lastPlayed = placeObj;
+	isPlaying = true;
+	
+	mapWhenPlay(placeObj);
+	$("#nowplaying").html("NOW PLAYING... "+placeObj.songname+" / "+placeObj.artist+" @"+placeObj.placename+" - "+placeObj.checkins+" checkins");
+}
+
+
+function stopAction(obj){
+	isPlaying = false;
+	setVideoSize(obj.id, videoW, videoH);
+	
+	mapInit(obj);
+	$("#nowplaying").html("WAITING FOR CHECKINS");
+}
+
+
+
+//facebook checkins//////////////////////////////////////////////////////////////////
+function setInitialInfo(placeObj){
+	FB.api(placeObj.place, function(data) {
+		if(data.error){
+			console.log(placeObj.placename + data.error.message);
+		}else{
+			placeObj.checkins= data.checkins;
+			placeObj.location = data.location;
+			updateInfo(placeObj);
+		}
+	});
 }
 
 
@@ -118,6 +146,8 @@ function monitorCheckins(placeObj){
 	});
 }
 
+
+
 //facebook app load ////////////////////////////////////////////////////////////////////
 var MY_APP_ID = 189494814415750;
 function fbLoad(){
@@ -132,11 +162,25 @@ function fbLoad(){
 }
 
 //google maps////////////////////////////////////////////////////////////////////
+
+var london = {
+	lat: 51.500152,
+	lng: -0.126236
+};
+
 function setMap(){
 //	console.log("set map");
-	var london_latlng = new google.maps.LatLng(51.500152,-0.126236);
+	var london_latlng = new google.maps.LatLng(london.lat, london.lng);
 	mainMap = createMap(london_latlng);
 }
+
+function mapInit(placeObj){
+	mainMap.setZoom(12);
+	placeObj.marker.setIcon(undefined);
+	closeInfoWindow(mainMap, placeObj.marker);
+	moveMapCenter(london.lat, london.lng);
+}
+
 
 function createMarkerFor(placeObj){
 	var lat= placeObj.location.latitude;
@@ -147,3 +191,17 @@ function createMarkerFor(placeObj){
 	marker.infoWindow = createInfoWindow(mainMap, marker, infoStr);
 	return marker;
 }
+
+function mapWhenPlay(placeObj){
+	mainMap.setZoom(17);
+	
+	//change marker icon to microphone
+	placeObj.marker.setIcon(iconImg);
+	
+	//open the info window for the current location/song
+	openInfoWindow(mainMap, placeObj.marker);
+	
+	//change centre of map to new location
+	moveMapCenter(placeObj.location.latitude, placeObj.location.longitude);
+}
+
